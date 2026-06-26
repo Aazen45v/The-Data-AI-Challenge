@@ -359,6 +359,25 @@ def ideal_profile_bonus(cand, comps, evidence):
     return 0.16 * (frac ** 2)
 
 
+def normalize_display(sorted_desc_raw):
+    """Map raw scores (already sorted descending) into a clean, non-increasing
+    [0.05, 0.99] display column. Shared by rank.py and the sandbox so they agree
+    and no score ever exceeds 1.0."""
+    if not sorted_desc_raw:
+        return []
+    hi = max(sorted_desc_raw)
+    lo = min(sorted_desc_raw)
+    span = (hi - lo) or 1.0
+    out = []
+    prev = 1.0
+    for s in sorted_desc_raw:
+        norm = 0.05 + 0.94 * ((s - lo) / span)
+        norm = min(norm, prev)
+        prev = norm
+        out.append(round(norm, 4))
+    return out
+
+
 def score_candidate(cand, R, honeypot_pen, honeypot_flags):
     txt = candidate_text(cand)
     W = R["weights"]

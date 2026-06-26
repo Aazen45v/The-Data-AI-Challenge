@@ -95,20 +95,14 @@ def main():
     # sort best-first by RAW score: score desc, tie desc, candidate_id asc
     ranked = sorted(heap, key=lambda x: (-x[0], -x[1], x[2]))[:TOPN]
 
-    # normalize raw scores into a clean [0.05, 0.99] display column, computed in
-    # raw order so it is monotonic with the intended ranking.
-    raw = [r[0] for r in ranked]
-    hi = max(raw) if raw else 1.0
-    lo = min(raw) if raw else 0.0
-    span = (hi - lo) or 1.0
-    prev = 1.0
+    # normalize raw scores into a clean [0.05, 0.99] display column (shared with
+    # the sandbox via ranker.scoring.normalize_display).
+    from ranker.scoring import normalize_display
+    norms = normalize_display([r[0] for r in ranked])
     rows = []
-    for (score, tie, cid, cand, comps, evidence) in ranked:
-        norm = 0.05 + 0.94 * ((score - lo) / span)
-        norm = min(norm, prev)          # guarantee non-increasing
-        prev = norm
+    for (score, tie, cid, cand, comps, evidence), norm in zip(ranked, norms):
         reasoning = build_reasoning(cand, comps, evidence)
-        rows.append([cid, round(norm, 4), reasoning])
+        rows.append([cid, norm, reasoning])
 
     # Validator rule: among rows with the SAME (rounded) score, candidate_id must
     # be ascending. Re-sort by (score desc, candidate_id asc) and assign ranks.
