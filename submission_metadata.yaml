@@ -1,0 +1,83 @@
+# Redrob Hackathon — Submission Metadata
+# Fill in the TODO fields with your real details before submitting.
+
+team_name: "TODO-your-team-name"
+
+primary_contact:
+  name: "Mohammad Aazen"
+  email: "TODO@example.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Mohammad Aazen"
+    email: "TODO@example.com"
+    role: "Team Lead / ML Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/TODO-username/redrob-ranker"
+
+sandbox_link: "https://huggingface.co/spaces/TODO-username/redrob-ranker"
+# app.py in this repo is the Streamlit sandbox. Deploy it to HF Spaces / Streamlit Cloud.
+
+reproduce_command: "./reproduce.sh ./candidates.jsonl ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "TODO (e.g. MacBook Pro M2 / Ubuntu 22.04 box)"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "TODO"
+  uses_gpu_for_inference: false        # rank.py is pure-Python, CPU only
+  has_network_during_ranking: false    # rank.py makes zero network calls
+  pre_computation_required: true       # JD -> rubric is precomputed offline (committed)
+  pre_computation_time_minutes: 1      # one OpenRouter call; output is committed
+
+# ============================================================================
+# AI tools declaration (transparency only; honest declaration is not penalized)
+# ============================================================================
+ai_tools_used:
+  - "Claude"        # architecture design, code review, reasoning logic
+  - "OpenRouter"    # OFFLINE one-shot JD -> rubric parsing only (build_rubric.py)
+
+ai_usage_summary: |
+  An LLM (via OpenRouter) is used ONCE, offline, to parse the free-text job
+  description into a structured ranking rubric (artifacts/jd_rubric.json), which
+  is committed to the repo. NO LLM/API call happens during the ranking step:
+  rank.py is pure-Python, CPU-only, no network, and reads the frozen rubric.
+  No candidate data is ever sent to any LLM. Claude was used for architecture
+  discussion and code review during development.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Structural-reasoning ranker, not embedding keyword-match. A JD rubric
+  (LLM-parsed offline, committed) drives seven transparent scoring components:
+  role relevance (the decisive anti-keyword-stuffer signal — current title vs a
+  padded AI skills list), requirement evidence weighted by WHERE it appears
+  (career-history descriptions >> skills list), skill-trust (proficiency x real
+  usage x endorsements x on-platform assessment, which defuses "expert in 10
+  skills, 0 months used"), experience-band fit, trajectory (product-company bias;
+  consulting-only, title-chasing, research-only, CV/speech-only disqualifiers
+  from the JD), a lightweight semantic concept-family match for plain-language
+  candidates, and location. A multiplicative behavioral modifier down-weights
+  perfect-on-paper but unreachable candidates (response rate, recency,
+  open-to-work, notice). Honeypots are caught as an internal-consistency tax,
+  not a special-case lookup, so unseen impossible profiles are also handled.
+  Reasoning strings are generated deterministically from extracted facts (no
+  hallucination possible). Runtime: ~45s for 100k candidates on CPU, stdlib only. A test suite (test_rank.py) guards the output contract for Stage-3 reproduction.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

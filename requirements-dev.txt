@@ -1,0 +1,9 @@
+# Optional — only for the OFFLINE rubric build and the hosted sandbox demo.
+# NOT needed to reproduce submission.csv (rank.py is stdlib-only).
+
+# build_rubric.py uses urllib (stdlib) for OpenRouter, so it needs nothing,
+# but pin requests in case you prefer to swap the client:
+# requests>=2.31
+
+# app.py sandbox demo (HuggingFace Spaces / Streamlit Cloud):
+streamlit>=1.30

@@ -1,0 +1,8 @@
+# rank.py (the scored ranking step) uses ONLY the Python standard library.
+# This is deliberate: zero heavy dependencies => trivially reproducible in the
+# Stage-3 no-network CPU sandbox, and no model downloads inside the 5-min budget.
+#
+# Python >= 3.9 is the only requirement to run rank.py.
+#
+# The OPTIONAL offline rubric step (build_rubric.py) and the sandbox demo
+# (app.py) have their own light deps listed in requirements-dev.txt.

@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "role_title": "Senior AI Engineer — Founding Team",
+    "source": "Parsed from job_description.txt. Regenerate with build_rubric.py (offline, OpenRouter). This file is committed so rank.py is fully reproducible with no network.",
+    "version": 2
+  },
+  "experience_band": { "min": 5, "max": 9, "soft_min": 4, "soft_max": 11 },
+
+  "must_have_concepts": [
+    { "name": "embeddings_retrieval", "weight": 1.0,
+      "terms": ["embedding", "embeddings", "sentence-transformer", "sentence transformer", "retrieval", "dense retrieval", "semantic search", "bge", "e5", "bi-encoder", "cross-encoder", "ann", "approximate nearest neighbor", "nearest neighbor search"] },
+    { "name": "vector_search_infra", "weight": 0.9,
+      "terms": ["vector database", "vector db", "vector search", "pinecone", "weaviate", "qdrant", "milvus", "faiss", "opensearch", "elasticsearch", "elastic search", "hybrid search", "bm25", "inverted index", "lucene", "solr"] },
+    { "name": "ranking_recsys", "weight": 1.0,
+      "terms": ["ranking", "ranker", "re-rank", "rerank", "learning to rank", "learning-to-rank", "ltr", "recommendation", "recommender", "recsys", "relevance", "search relevance", "matching engine", "match engine", "personalization", "personalisation", "candidate generation", "feed ranking", "search ranking"] },
+    { "name": "eval_frameworks", "weight": 0.8,
+      "terms": ["ndcg", "mrr", "map@", "precision@", "recall@", "a/b test", "ab test", "offline evaluation", "offline metrics", "online evaluation", "ranking metrics", "evaluation framework", "eval framework", "offline-to-online"] },
+    { "name": "modern_ml_llm", "weight": 0.7,
+      "terms": ["llm", "large language model", "fine-tune", "fine tuning", "finetune", "lora", "qlora", "peft", "rag", "retrieval augmented", "transformer", "bert", "distillation"] },
+    { "name": "python_production", "weight": 0.5,
+      "terms": ["python", "production", "deployed", "in production", "real users", "pipeline", "scalable", "scale", "latency", "throughput", "serving", "inference"] }
+  ],
+
+  "nice_to_have_concepts": [
+    { "name": "ltr_models", "weight": 0.4, "terms": ["xgboost", "lightgbm", "gradient boosting", "neural ranking"] },
+    { "name": "hr_tech", "weight": 0.35, "terms": ["hr-tech", "hrtech", "recruiting", "recruitment", "talent", "ats", "marketplace", "two-sided"] },
+    { "name": "distributed_systems", "weight": 0.3, "terms": ["distributed", "spark", "kafka", "ray", "kubernetes", "k8s", "inference optimization"] },
+    { "name": "open_source", "weight": 0.3, "terms": ["open source", "open-source", "github", "contributor", "maintainer", "paper", "publication", "talk", "conference"] }
+  ],
+
+  "role_relevance": {
+    "strong_positive": ["ai engineer", "ml engineer", "machine learning engineer", "applied scientist", "research engineer", "applied ml", "search engineer", "relevance engineer", "nlp engineer", "recommendation", "data scientist", "staff engineer", "senior software engineer"],
+    "adjacent_positive": ["software engineer", "backend engineer", "data engineer", "analytics engineer", "platform engineer", "full stack", "fullstack"],
+    "negative": ["marketing", "accountant", "accounting", "civil engineer", "mechanical engineer", "sales executive", "sales manager", "graphic designer", "content writer", "hr manager", "human resources", "customer support", "operations manager", "project manager", "business analyst", "recruiter", "administrative"]
+  },
+
+  "consulting_firms": ["tcs", "tata consultancy", "infosys", "wipro", "accenture", "cognizant", "capgemini", "tech mahindra", "hcl", "mindtree", "ltimindtree", " l&t infotech", "mphasis", "deloitte", "pwc"],
+
+  "research_only_markers": ["research scientist", "phd researcher", "postdoc", "post-doc", "research fellow", "academic", "university", "institute of technology research", "research assistant", "research lab"],
+  "production_markers": ["production", "deployed", "shipped", "real users", "live", "serving", "in prod", "at scale", "users"],
+
+  "cv_speech_robotics": ["computer vision", "image classification", "object detection", "speech recognition", "asr", "text-to-speech", "tts", "robotics", "slam", "lidar", "autonomous"],
+  "nlp_ir_markers": ["nlp", "natural language", "information retrieval", "search", "ranking", "retrieval", "text", "embedding", "recommendation"],
+
+  "location": {
+    "india_terms": ["india", "pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bangalore", "bengaluru", "chennai", "kolkata", "ahmedabad"],
+    "preferred": ["pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bengaluru", "bangalore"]
+  },
+
+  "weights": {
+    "role_relevance": 0.26,
+    "core_requirements": 0.24,
+    "semantic": 0.12,
+    "skill_trust": 0.10,
+    "experience_fit": 0.12,
+    "trajectory": 0.10,
+    "location": 0.06
+  },
+
+  "behavioral": {
+    "floor": 0.55,
+    "ceil": 1.12,
+    "response_rate_w": 0.30,
+    "recency_w": 0.30,
+    "open_to_work_w": 0.12,
+    "interview_completion_w": 0.10,
+    "saved_by_recruiters_w": 0.08,
+    "verified_w": 0.05,
+    "notice_period_w": 0.05
+  }
+}
