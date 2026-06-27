@@ -796,4 +796,59 @@ def screen_detail():
             st.markdown('<div style="font-weight:600;margin-bottom:6px;">Platform activity & availability</div>',
                          unsafe_allow_html=True)
             for lab, val in platform_signals(c).items():
-                st.markdown(f'<di
+                st.markdown(f'<div class="rb-signal-row"><span class="lab">{lab}</span><span class="val">{val}</span></div>',
+                             unsafe_allow_html=True)
+
+        hist = c.get("career_history", []) or []
+        with st.container(border=True):
+            st.markdown('<div style="font-weight:600;margin-bottom:8px;">Career history</div>', unsafe_allow_html=True)
+            for job in hist:
+                dot_color = ACCENT if job.get("is_current") else "#CFCBBE"
+                current_badge = '<span class="rb-timeline-current">CURRENT</span>' if job.get("is_current") else ""
+                st.markdown(
+                    f"""
+                    <div class="rb-timeline-item">
+                        <div class="rb-timeline-dot" style="background:{dot_color};"></div>
+                        <div>
+                            <div class="rb-timeline-title">{job.get('title', '?')} · {job.get('company', '?')}{current_badge}</div>
+                            <div class="rb-timeline-meta">{job.get('duration_months', '?')} months · {job.get('industry', '?')}</div>
+                            <div class="rb-timeline-desc">{job.get('description', '')}</div>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+        skills = c.get("skills", []) or []
+        top_sk = sorted(skills, key=lambda s: -(s.get("duration_months", 0) or 0))[:8]
+        skt = x["ev"].get("skill_trust", {}).get("skill_trust_ratio", 1.0)
+        with st.container(border=True):
+            st.markdown(f'<div style="font-weight:600;margin-bottom:8px;">Top skills <span style="font-size:11.5px;color:#8A8775;font-weight:400;">'
+                         f'(trust ratio {skt:.2f})</span></div>', unsafe_allow_html=True)
+            for s in top_sk:
+                dur = s.get("duration_months", 0) or 0
+                dot_color = ACCENT if dur > 0 else LOW
+                st.markdown(
+                    f'<div class="rb-skill-row"><div class="rb-skill-dot" style="background:{dot_color};"></div>'
+                    f'<div class="rb-skill-name">{s.get("name", "?")}</div>'
+                    f'<div class="rb-skill-meta">{s.get("proficiency", "?")} · {dur}mo · {s.get("endorsements", 0)} endorsed</div></div>',
+                    unsafe_allow_html=True,
+                )
+
+    summ = p.get("summary")
+    if summ:
+        st.markdown(f'<div class="rb-card"><div style="font-weight:600;margin-bottom:6px;">Profile summary</div>'
+                     f'<div style="font-size:13.5px;line-height:1.55;color:#3C3A30;">{summ}</div></div>',
+                     unsafe_allow_html=True)
+
+
+# ---------------------------------------------------------------- main
+
+render_header()
+
+if ss.view == "upload":
+    screen_upload()
+elif ss.view == "list":
+    screen_list()
+elif ss.view == "detail":
+    screen_detail()

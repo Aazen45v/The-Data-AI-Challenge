@@ -244,4 +244,99 @@ it" before a line of scoring code was written.
 **2. Design the rubric as data, not code.** `artifacts/jd_rubric.json` holds
 every weight, concept-term list, and disqualifier as plain JSON so the ranking
 logic in `rank.py`/`ranker/` never hard-codes the JD. `build_rubric.py` is the
-one place an LLM touches this project: run once, offline
+one place an LLM touches this project: run once, offline, against
+`job_description.txt`, to turn a messy paragraph into that structured rubric.
+Network access lives only there — by design, it's pre-computation, not part of
+the judged ranking step.
+
+**3. Build the seven scoring components incrementally, each with its own
+evidence.** `ranker/scoring.py` grew one component at a time
+(`role_relevance` first, since it's the strongest anti-stuffing signal),
+checking after each addition that scores stayed interpretable — every
+component returns both a 0–1 number *and* the evidence string that justifies
+it, so `ranker/reasoning.py` never has to invent a reason.
+
+**4. Add the honeypot detector as an independent pass.** `ranker/honeypot.py`
+doesn't touch the scoring weights at all — it's a separate internal-consistency
+tax (tenure longer than the declared career, "expert" skills with 0 months
+used, dates that don't add up) layered on afterward, so it generalizes to
+impossible profiles the rubric never saw.
+
+**5. Lock the contract with tests before scaling to 100k rows.**
+`test_rank.py` runs against the 50-profile `sample_candidates.json` and checks
+the things a validator would: unique ranks, non-increasing scores with
+deterministic tie-breaks, non-empty unique reasoning, and identical output
+across repeated runs. Only after that passed did `rank.py` get pointed at the
+full `candidates.jsonl` to confirm the ~45s full-pool run and the 0-honeypot,
+0-stuffer result in the top 100.
+
+**6. Build the sandbox UI as its own design system, last.** `app.py` was
+deliberately the final piece — it reuses `ranker/` and the same rubric
+unchanged, so the demo can never silently diverge from the judged pipeline.
+The UI is hand-rolled CSS injected via `st.markdown` (Hanken Grotesk for text,
+JetBrains Mono for numbers/labels/badges) rather than default Streamlit
+styling, built screen by screen: Upload → Shortlist → Candidate detail, wired
+together with `st.session_state` instead of separate pages so the three
+screenshots above are really one continuous flow.
+
+**7. Make the demo support more than one job.** Once the three-screen flow
+worked for the released JD, `discover_rubrics()` was added so *any* rubric
+JSON dropped into `artifacts/` shows up as a selectable search profile —
+three more (Backend Engineer, Data Scientist, Product Manager) were generated
+the same offline way and committed, with no code changes needed to add them.
+
+**8. Package for reproducibility, then deploy.** `reproduce.sh` chains the
+test → rank → validate commands so a grader can run one script.
+`validate_submission.py` is the official checker, run locally before every
+commit. `app.py` was then deployed to Streamlit Community Cloud (free tier) —
+see the next section — and the sandbox link, team metadata, and submission
+files were assembled last, per the checklist below.
+
+---
+
+## 9. Sandbox (required for submission)
+
+`app.py` is the hosted-sandbox demo. Deploy it to **HuggingFace Spaces** (free)
+or **Streamlit Cloud**, then upload a small `.jsonl` sample and it runs the
+identical pipeline and offers the ranked CSV for download.
+
+Run it locally first:
+```bash
+pip install -r requirements-dev.txt
+streamlit run app.py
+```
+
+---
+
+## 10. Before you submit — checklist
+
+- [ ] `python validate_submission.py submission.csv` prints **Submission is valid.**
+- [ ] Fill in the `TODO` fields in `submission_metadata.yaml` (team name, email, GitHub URL, sandbox URL).
+- [ ] Push this repo to **GitHub** (public, or be ready to grant organizer access).
+- [ ] Deploy `app.py` and paste the **sandbox link** into the metadata + portal.
+- [ ] Submit three things: **submission.csv**, **approach_deck.pdf**, and the **GitHub repo link**.
+
+---
+
+## 11. Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `python: command not found` | Use `python3` instead of `python`. |
+| Validator complains about row count / ranks | Re-run `rank.py` to regenerate the CSV; don't hand-edit it. |
+| `candidates.jsonl` not found | Make sure the file is in this folder, or pass its full path to `--candidates`. |
+| Runs slower than ~45s | Fine as long as it's under 5 minutes; speed depends on the machine. |
+| Want to change the ranking behavior | Edit `artifacts/jd_rubric.json` (weights / terms), then re-run. |
+| `build_rubric.py` says no API key | Expected — it's optional. The committed rubric is used and nothing breaks. |
+
+---
+
+## 12. Reproduce command (for the portal)
+
+```
+./reproduce.sh ./candidates.jsonl ./submission.csv
+```
+or
+```
+python rank.py --candidates ./candidates.jsonl --out ./submission.csv
+```
