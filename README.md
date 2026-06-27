@@ -12,7 +12,28 @@ keywords.
 
 ---
 
-## 1. TL;DR — run it in three commands
+## 1. Screenshots
+
+The hosted sandbox (`app.py`) walks a recruiter through three screens. *(Recreated at
+pixel-fidelity from the app's actual CSS/colors for this README — open the
+[live sandbox](#9-sandbox-required-for-submission) to see it for real.)*
+
+**01 · Upload** — drop in a `.jsonl` file, pick a search profile, choose how many to shortlist.
+
+![Upload screen](screenshots/01_upload.png)
+
+**02 · Ranked shortlist** — every candidate scored and explained, strongest first.
+
+![Shortlist screen](screenshots/02_shortlist.png)
+
+**03 · Candidate detail** — the full evidence trail behind one score: component breakdown,
+availability modifier, requirement evidence, career history, and platform signals.
+
+![Candidate detail screen](screenshots/03_detail.png)
+
+---
+
+## 2. TL;DR — run it in three commands
 
 ```bash
 # 0) you need Python 3.9+ and the dataset file candidates.jsonl in this folder
@@ -32,13 +53,13 @@ That's it. No pip install, no API key, no GPU, no internet needed.
 
 ---
 
-## 2. Prerequisites
+## 3. Prerequisites
 
 | Requirement | Detail |
 |---|---|
 | **Python** | 3.9 or newer. Check with `python --version` (or `python3 --version`). |
 | **Dependencies** | **None** for ranking — `rank.py` uses only the Python standard library. |
-| **The dataset** | `candidates.jsonl` (100k lines, ~465 MB). Get it from the hackathon bundle — see step 3. |
+| **The dataset** | `candidates.jsonl` (100k lines, ~465 MB). Get it from the hackathon bundle — see step 4. |
 | **OS** | Any (Linux, macOS, Windows). |
 
 > On some systems the command is `python3` instead of `python`. Use whichever
@@ -52,7 +73,7 @@ pip install -r requirements-dev.txt   # installs streamlit for app.py
 
 ---
 
-## 3. Get the dataset
+## 4. Get the dataset
 
 The repo does **not** ship `candidates.jsonl` (it's huge). From the hackathon
 bundle:
@@ -75,7 +96,7 @@ the sandbox demo work without the full file.
 
 ---
 
-## 4. How to run — step by step
+## 5. How to run — step by step
 
 ### Step 1 — sanity test (no dataset needed)
 ```bash
@@ -110,7 +131,7 @@ weights. Edit that file and re-run `rank.py`. No code changes needed.
 
 ---
 
-## 5. What every file is
+## 6. What every file is
 
 ```
 rank.py                  THE judged step. Streams candidates.jsonl, scores each
@@ -135,6 +156,7 @@ build_rubric.py          OPTIONAL. Offline helper that uses an LLM (via OpenRout
                          ranking time. Safe to ignore or delete.
 
 app.py                   Streamlit sandbox demo (the required hosted sandbox).
+screenshots/             README screenshots of the three app.py screens.
 sample_candidates.json   50-profile sample used by tests + the demo.
 job_description.txt       The released JD.
 candidate_schema.json    The candidate data schema (reference).
@@ -151,7 +173,7 @@ requirements-dev.txt     streamlit, only for the sandbox demo.
 
 ---
 
-## 6. How it works (the approach)
+## 7. How it works (the approach)
 
 The JD says the quiet part out loud: *"the right answer is not find candidates
 whose skills section contains the most AI keywords — that's a trap we've
@@ -207,49 +229,19 @@ sent to an LLM, and the ranking step makes zero network calls.**
 
 ---
 
-## 7. Sandbox (required for submission)
+## 8. How this was built
 
-`app.py` is the hosted-sandbox demo. Deploy it to **HuggingFace Spaces** (free)
-or **Streamlit Cloud**, then upload a small `.jsonl` sample and it runs the
-identical pipeline and offers the ranked CSV for download.
+The build went in the order a real recruiting tool has to, not the order that's
+most fun to code: **rules before UI, evidence before LLMs, a no-network
+fallback before a hosted demo.**
 
-Run it locally first:
-```bash
-pip install -r requirements-dev.txt
-streamlit run app.py
-```
+**1. Read the JD like a hiring manager, not a keyword matcher.** The brief
+explicitly warns that the trap is keyword-stuffed profiles — so the first
+decision was to *not* build a semantic-similarity ranker, since similarity is
+exactly what stuffing fools. That ruled out "embed everything and cosine-rank
+it" before a line of scoring code was written.
 
----
-
-## 8. Before you submit — checklist
-
-- [ ] `python validate_submission.py submission.csv` prints **Submission is valid.**
-- [ ] Fill in the `TODO` fields in `submission_metadata.yaml` (team name, email, GitHub URL, sandbox URL).
-- [ ] Push this repo to **GitHub** (public, or be ready to grant organizer access).
-- [ ] Deploy `app.py` and paste the **sandbox link** into the metadata + portal.
-- [ ] Submit three things: **submission.csv**, **approach_deck.pdf**, and the **GitHub repo link**.
-
----
-
-## 9. Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `python: command not found` | Use `python3` instead of `python`. |
-| Validator complains about row count / ranks | Re-run `rank.py` to regenerate the CSV; don't hand-edit it. |
-| `candidates.jsonl` not found | Make sure the file is in this folder, or pass its full path to `--candidates`. |
-| Runs slower than ~45s | Fine as long as it's under 5 minutes; speed depends on the machine. |
-| Want to change the ranking behavior | Edit `artifacts/jd_rubric.json` (weights / terms), then re-run. |
-| `build_rubric.py` says no API key | Expected — it's optional. The committed rubric is used and nothing breaks. |
-
----
-
-## 10. Reproduce command (for the portal)
-
-```
-./reproduce.sh ./candidates.jsonl ./submission.csv
-```
-or
-```
-python rank.py --candidates ./candidates.jsonl --out ./submission.csv
-```
+**2. Design the rubric as data, not code.** `artifacts/jd_rubric.json` holds
+every weight, concept-term list, and disqualifier as plain JSON so the ranking
+logic in `rank.py`/`ranker/` never hard-codes the JD. `build_rubric.py` is the
+one place an LLM touches this project: run once, offline
