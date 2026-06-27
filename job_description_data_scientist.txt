@@ -1,0 +1,33 @@
+Job Description: Data Scientist / ML — Founding Team
+Company: Redrob AI (Series A AI-native talent intelligence platform)
+Location: Pune/Noida, India (Hybrid) | Open to relocation candidates from Tier-1 Indian cities
+Employment Type: Full-time
+Experience Required: 3–7 years
+
+What you'd actually be doing
+You'd turn Redrob's behavioral and platform data (recruiter responses, search appearances, profile views, interview outcomes) into models and experiments that make the product smarter — pricing experiments, lead scoring, churn prediction, and feature instrumentation for the ranking team to consume. Heavy SQL, heavy experimentation discipline, real production model deployment — not just notebooks that never ship.
+
+Things you absolutely need
+- Hands-on statistical modeling: regression, hypothesis testing, causal inference, or experimental design used to make a real product or business decision.
+- Practical ML: classification/regression/clustering, gradient boosting (XGBoost/LightGBM) or comparable, applied to a real dataset with real users downstream.
+- Strong Python data stack: pandas, numpy, scikit-learn, plus the SQL to pull your own data.
+- Experience designing and interpreting A/B tests or other causal experiments — not just running the analysis, but choosing the right design.
+- At least one model or analysis you've taken from notebook to production (a deployed model, a dashboard driving decisions, or a shipped experiment).
+
+Things we'd like you to have but won't reject you for
+- Deep learning experience (PyTorch/TensorFlow).
+- NLP or applied LLM experience.
+- Dashboarding/BI tools (Looker, Tableau, Metabase).
+- Open-source contributions, papers, or talks.
+
+Things we explicitly do NOT want
+- Pure research backgrounds (academic labs, research-only roles) with no production deployment experience.
+- People who have only worked at consulting/services firms (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini, etc.) their entire career.
+- Title-chasers: company-hopping every 1.5 years chasing seniority titles.
+- Candidates whose "ML experience" is recent (under 12 months) LangChain/OpenAI-API projects with no underlying modeling or statistics depth.
+
+On location, comp, and logistics
+Pune/Noida-preferred but flexible; candidates in Hyderabad, Mumbai, Delhi NCR welcome. Outside India: case-by-case, no visa sponsorship. Sub-30-day notice strongly preferred.
+
+How to read between the lines
+The ideal candidate has 4-6 years total experience, most of it doing applied (not purely academic) data science or ML at a product company, has shipped at least one model or experiment that changed a real product decision, is comfortable writing their own SQL/Python rather than waiting on a data engineer, and is located in or willing to relocate to an India hub. Active on the Redrob platform so we can actually reach them.

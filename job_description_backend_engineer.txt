@@ -1,0 +1,33 @@
+Job Description: Backend Engineer — Founding Team
+Company: Redrob AI (Series A AI-native talent intelligence platform)
+Location: Pune/Noida, India (Hybrid) | Open to relocation candidates from Tier-1 Indian cities
+Employment Type: Full-time
+Experience Required: 4–8 years
+
+What you'd actually be doing
+You'd own the services that everything else at Redrob is built on: the candidate/recruiter data layer, search and matching APIs, ingestion pipelines, and the infrastructure that keeps all of it fast and correct as we scale from low hundreds of thousands to tens of millions of profiles. You will design schemas, build and operate APIs (REST/GraphQL/gRPC), and be on the hook when something breaks at 2am — at least until the team is big enough that it isn't always you.
+
+Things you absolutely need
+- Production experience designing and operating relational + key-value data stores (Postgres, MySQL, Redis, or similar) at meaningful scale — schema design, indexing, query optimization, migrations without downtime.
+- Hands-on experience building and operating production APIs (REST, GraphQL, or gRPC) consumed by real clients.
+- Experience with distributed systems concerns: message queues (Kafka/SQS/RabbitMQ), service-to-service communication, eventual consistency, idempotency.
+- Comfort owning cloud infrastructure (AWS, GCP, or Azure) including containers (Docker/Kubernetes) and CI/CD pipelines.
+- Strong production coding ability in Python, Go, Java, or Node.js — this role writes code, not just reviews it.
+
+Things we'd like you to have but won't reject you for
+- Experience with event streaming at scale (Kafka, Pulsar).
+- Security-conscious engineering practices (auth, rate limiting, secrets management).
+- Performance tuning / profiling production systems under real load.
+- Open-source contributions or technical writing.
+
+Things we explicitly do NOT want
+- Title-chasers: career trajectory optimized for "Senior" → "Staff" → "Principal" via company-hopping every 1.5 years.
+- People who have only worked at consulting firms (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini, etc.) their entire career, with no product-company experience.
+- Pure research backgrounds with zero production deployment experience.
+- Senior engineers who haven't shipped production code in 18+ months because they moved into pure architecture/management.
+
+On location, comp, and logistics
+Pune/Noida-preferred but flexible; candidates in Hyderabad, Mumbai, Delhi NCR welcome. Outside India: case-by-case, no visa sponsorship. Sub-30-day notice strongly preferred.
+
+How to read between the lines
+The ideal candidate has 5-7 years total experience, most of it building and operating backend systems at a product company (not pure IT services), has owned a service end-to-end in production (not just contributed to one), is comfortable with on-call, and is located in or willing to relocate to an India hub. Active on the Redrob platform so we can actually reach them — a perfect-on-paper candidate who hasn't logged in for months is not, for hiring purposes, actually available.

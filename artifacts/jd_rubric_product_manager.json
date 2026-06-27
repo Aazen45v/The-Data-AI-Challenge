@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "role_title": "Product Manager — Founding Team",
+    "company": "Redrob AI",
+    "source": "Hand-authored to match build_rubric.py's output schema, paired with job_description_product_manager.txt. Regenerate with build_rubric.py (offline, OpenRouter) if you want an LLM pass instead.",
+    "version": 1
+  },
+  "experience_band": { "min": 4, "max": 9, "soft_min": 3, "soft_max": 11 },
+
+  "must_have_concepts": [
+    { "name": "product_strategy", "weight": 0.9,
+      "terms": ["product strategy", "roadmap", "product vision", "prioritization", "okrs", "product owner", "product lead"] },
+    { "name": "data_driven_pm", "weight": 0.9,
+      "terms": ["a/b test", "ab test", "metrics", "analytics", "sql", "experimentation", "kpi", "north star metric", "funnel analysis"] },
+    { "name": "user_research", "weight": 0.8,
+      "terms": ["customer interview", "user research", "usability test", "user testing", "voice of customer", "discovery interview"] },
+    { "name": "product_launch", "weight": 0.7,
+      "terms": ["go-to-market", "go to market", "product launch", "shipped feature", "launched", "feature launch"] },
+    { "name": "stakeholder_mgmt", "weight": 0.6,
+      "terms": ["cross-functional", "cross functional", "stakeholder management", "worked closely with engineering", "collaborated with design"] },
+    { "name": "technical_fluency", "weight": 0.5,
+      "terms": ["api spec", "technical spec", "technical requirements", "worked with engineers", "wrote prd", "product requirements document"] }
+  ],
+
+  "nice_to_have_concepts": [
+    { "name": "b2b_saas", "weight": 0.3, "terms": ["b2b saas", "saas", "enterprise software", "marketplace"] },
+    { "name": "growth_pm", "weight": 0.3, "terms": ["growth", "lifecycle marketing", "retention", "activation", "onboarding funnel"] },
+    { "name": "ai_product", "weight": 0.3, "terms": ["ai product", "llm product", "ml-powered feature", "ai feature"] },
+    { "name": "hr_tech", "weight": 0.25, "terms": ["hr-tech", "hrtech", "recruiting", "recruitment", "talent", "ats"] }
+  ],
+
+  "role_relevance": {
+    "strong_positive": ["product manager", "senior product manager", "group product manager", "head of product", "vp product", "associate product manager", "technical product manager", "director of product"],
+    "adjacent_positive": ["program manager", "product owner", "business analyst", "founder", "co-founder"],
+    "negative": ["software engineer", "backend engineer", "accountant", "accounting", "civil engineer", "mechanical engineer", "sales executive", "sales manager", "graphic designer", "content writer", "hr manager", "human resources", "customer support", "recruiter", "administrative"]
+  },
+
+  "consulting_firms": ["tcs", "tata consultancy", "infosys", "wipro", "accenture", "cognizant", "capgemini", "tech mahindra", "hcl", "mindtree", "ltimindtree", " l&t infotech", "mphasis", "deloitte", "pwc"],
+
+  "research_only_markers": ["research scientist", "phd researcher", "postdoc", "post-doc", "research fellow", "academic", "university", "research assistant"],
+  "production_markers": ["launched", "shipped", "real users", "live", "drove adoption", "moved the metric", "in production", "at scale", "users"],
+
+  "cv_speech_robotics": [],
+  "nlp_ir_markers": [],
+
+  "location": {
+    "india_terms": ["india", "pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bangalore", "bengaluru", "chennai", "kolkata", "ahmedabad"],
+    "preferred": ["pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bengaluru", "bangalore"]
+  },
+
+  "weights": {
+    "role_relevance": 0.28,
+    "core_requirements": 0.26,
+    "semantic": 0.06,
+    "skill_trust": 0.10,
+    "experience_fit": 0.12,
+    "trajectory": 0.12,
+    "location": 0.06
+  },
+
+  "behavioral": {
+    "floor": 0.55,
+    "ceil": 1.12,
+    "response_rate_w": 0.30,
+    "recency_w": 0.30,
+    "open_to_work_w": 0.12,
+    "interview_completion_w": 0.10,
+    "saved_by_recruiters_w": 0.08,
+    "verified_w": 0.05,
+    "notice_period_w": 0.05
+  }
+}

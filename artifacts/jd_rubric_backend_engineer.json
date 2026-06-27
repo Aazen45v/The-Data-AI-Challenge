@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "role_title": "Backend Engineer — Founding Team",
+    "company": "Redrob AI",
+    "source": "Hand-authored to match build_rubric.py's output schema, paired with job_description_backend_engineer.txt. Regenerate with build_rubric.py (offline, OpenRouter) if you want an LLM pass instead.",
+    "version": 1
+  },
+  "experience_band": { "min": 4, "max": 8, "soft_min": 3, "soft_max": 10 },
+
+  "must_have_concepts": [
+    { "name": "databases_storage", "weight": 1.0,
+      "terms": ["postgres", "postgresql", "mysql", "redis", "cassandra", "dynamodb", "database", "schema design", "indexing", "query optimization", "sql", "nosql", "data store", "sharding"] },
+    { "name": "api_design", "weight": 0.9,
+      "terms": ["rest api", "restful", "graphql", "grpc", "api design", "microservice", "web service", "endpoint", "openapi", "swagger"] },
+    { "name": "distributed_systems", "weight": 0.9,
+      "terms": ["distributed system", "message queue", "kafka", "rabbitmq", "sqs", "pubsub", "pub/sub", "event driven", "eventual consistency", "idempotent", "service to service", "load balanc"] },
+    { "name": "cloud_infra", "weight": 0.8,
+      "terms": ["aws", "gcp", "azure", "docker", "kubernetes", "k8s", "ci/cd", "ci-cd", "terraform", "infrastructure as code", "container"] },
+    { "name": "production_ops", "weight": 0.7,
+      "terms": ["on-call", "oncall", "incident response", "monitoring", "observability", "sla", "uptime", "alerting", "postmortem"] },
+    { "name": "backend_languages", "weight": 0.6,
+      "terms": ["python", "golang", "go ", "java", "node.js", "nodejs", "typescript", "production code", "backend service"] }
+  ],
+
+  "nice_to_have_concepts": [
+    { "name": "event_streaming", "weight": 0.35, "terms": ["kafka", "pulsar", "stream processing", "flink"] },
+    { "name": "security_practices", "weight": 0.3, "terms": ["authentication", "authorization", "oauth", "rate limiting", "secrets management", "encryption"] },
+    { "name": "performance_tuning", "weight": 0.3, "terms": ["profiling", "performance tuning", "latency optimization", "throughput", "caching strategy"] },
+    { "name": "open_source", "weight": 0.25, "terms": ["open source", "open-source", "github", "contributor", "maintainer"] }
+  ],
+
+  "role_relevance": {
+    "strong_positive": ["backend engineer", "software engineer", "platform engineer", "infrastructure engineer", "systems engineer", "staff engineer", "senior software engineer", "api engineer", "site reliability engineer", "sre"],
+    "adjacent_positive": ["full stack", "fullstack", "devops engineer", "data engineer", "cloud engineer"],
+    "negative": ["marketing", "accountant", "accounting", "civil engineer", "mechanical engineer", "sales executive", "sales manager", "graphic designer", "content writer", "hr manager", "human resources", "customer support", "operations manager", "business analyst", "recruiter", "administrative", "product manager"]
+  },
+
+  "consulting_firms": ["tcs", "tata consultancy", "infosys", "wipro", "accenture", "cognizant", "capgemini", "tech mahindra", "hcl", "mindtree", "ltimindtree", " l&t infotech", "mphasis", "deloitte", "pwc"],
+
+  "research_only_markers": ["research scientist", "phd researcher", "postdoc", "post-doc", "research fellow", "academic", "university", "research assistant", "research lab"],
+  "production_markers": ["production", "deployed", "shipped", "real users", "live", "serving", "in prod", "at scale", "users", "on-call"],
+
+  "cv_speech_robotics": [],
+  "nlp_ir_markers": [],
+
+  "location": {
+    "india_terms": ["india", "pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bangalore", "bengaluru", "chennai", "kolkata", "ahmedabad"],
+    "preferred": ["pune", "noida", "hyderabad", "mumbai", "delhi", "gurgaon", "gurugram", "ncr", "bengaluru", "bangalore"]
+  },
+
+  "weights": {
+    "role_relevance": 0.26,
+    "core_requirements": 0.26,
+    "semantic": 0.08,
+    "skill_trust": 0.12,
+    "experience_fit": 0.14,
+    "trajectory": 0.10,
+    "location": 0.04
+  },
+
+  "behavioral": {
+    "floor": 0.55,
+    "ceil": 1.12,
+    "response_rate_w": 0.30,
+    "recency_w": 0.30,
+    "open_to_work_w": 0.12,
+    "interview_completion_w": 0.10,
+    "saved_by_recruiters_w": 0.08,
+    "verified_w": 0.05,
+    "notice_period_w": 0.05
+  }
+}

@@ -1,0 +1,33 @@
+Job Description: Product Manager — Founding Team
+Company: Redrob AI (Series A AI-native talent intelligence platform)
+Location: Pune/Noida, India (Hybrid) | Open to relocation candidates from Tier-1 Indian cities
+Employment Type: Full-time
+Experience Required: 4–9 years
+
+What you'd actually be doing
+You'd own a slice of the recruiter or candidate experience end-to-end: talking to users, writing specs, working daily with engineering and design, instrumenting and reading the data, and being accountable for whether the thing you shipped actually moved a metric. At this stage "product manager" means you'll also write some of the first-draft copy, sit in on sales calls, and argue in Slack about priority — there's no large PM org to hide behind.
+
+Things you absolutely need
+- A track record of owning product strategy and roadmap for a real product area — not just running a backlog, but deciding what NOT to build.
+- Direct experience running user research: customer interviews, usability testing, or similar, that changed what got built.
+- Comfort being data-driven: pulling your own SQL, defining metrics, designing and reading A/B tests, not just asking an analyst.
+- Demonstrated cross-functional execution: working daily with engineers and designers to actually ship, not just write requirements documents.
+- At least one product or feature you've taken from idea to launch, with a measurable outcome you can talk about in detail.
+
+Things we'd like you to have but won't reject you for
+- B2B SaaS or marketplace product experience.
+- Growth/lifecycle PM experience.
+- Experience shipping AI-powered product features.
+- Technical fluency (can read an API spec, has worked closely enough with engineers to understand trade-offs).
+
+Things we explicitly do NOT want
+- Career trajectories that look like pure program/project management (status tracking, no product ownership) rather than product management.
+- Title-chasers: company-hopping every 1.5 years chasing seniority titles without an accompanying track record of shipped outcomes.
+- People who have only worked at consulting/services firms (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini, etc.) their entire career with no in-house product ownership.
+- Candidates whose resumes show only large, mature-company PM work with no scrappy/early-stage experience and no appetite for ambiguity.
+
+On location, comp, and logistics
+Pune/Noida-preferred but flexible; candidates in Hyderabad, Mumbai, Delhi NCR welcome. Outside India: case-by-case, no visa sponsorship. Sub-30-day notice strongly preferred.
+
+How to read between the lines
+The ideal candidate has 5-8 years total experience, several of them owning a product area end-to-end at a product company (not pure agency/consulting work), is comfortable with ambiguity and a small team, can point to a specific launch they drove and the metric it moved, and is located in or willing to relocate to an India hub. Active on the Redrob platform so we can actually reach them.

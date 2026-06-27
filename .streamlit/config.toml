@@ -1,0 +1,12 @@
+[server]
+# Default is 200 (MB). candidates.jsonl is ~465MB, so raise the cap to allow
+# uploading the full 100k pool when testing app.py locally.
+maxUploadSize = 600
+
+[theme]
+base = "light"
+primaryColor = "#1A7A4E"
+backgroundColor = "#F4F7F5"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#17150F"
+font = "sans serif"
