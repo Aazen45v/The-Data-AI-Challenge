@@ -560,7 +560,7 @@ def screen_upload():
         if len(labels) <= 1:
             st.caption("Only one profile available — drop more rubric files in artifacts/ "
                        "(built offline via build_rubric.py) to add more.")
-        st.markdown("<div style='height:14px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:38px;'></div>", unsafe_allow_html=True)
 
         concept_pills = "".join(
             f'<span class="rb-concept-pill" style="background:#E4F0E7;color:#115C3A;">{concept_label(c["name"])}</span>'
