@@ -17,6 +17,7 @@ keywords.
 The hosted sandbox (`app.py`) walks a recruiter through three screens. *(Recreated at
 pixel-fidelity from the app's actual CSS/colors for this README — open the
 [live sandbox](#9-sandbox-required-for-submission) to see it for real.)*
+https://the-data-ai-challenge-sxmxdrybsfs6drfuxwpqut.streamlit.app/
 
 **01 · Upload** — drop in a `.jsonl` file, pick a search profile, choose how many to shortlist.
 
